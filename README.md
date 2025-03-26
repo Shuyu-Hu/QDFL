@@ -79,7 +79,7 @@ GitHub Issues: Open Issue
 
 ## 🙏 Acknowledgement
 We gratefully acknowledge the following contributions that made this research possible:
-* **Dataset Providers** of the University-1652 and SUES-200 dataset providers for their pioneering work in cross-view geo-localization benchmarking.
+* **Dataset Providers** of the University-1652 and SUES-200 dataset for their pioneering work in cross-view geo-localization benchmarking.
 * **Our colleagues in the cross-view geo-localization research community** for their valuable insights and constructive discussions.
 * **Reviewers and editors** whose feedback helped improve this work.
 
