@@ -1,0 +1,34 @@
+batch_size: 24
+image_size: [256,256]
+test_size: [256,256]
+sample_num: 1
+DAC_sampling: False
+model_configs:
+  backbone_name: "swinv2_base"
+  backbone_configs:
+  components_name: "SDPL"
+  components_configs:
+    num_classes: 701
+    pool: 'avg'
+    num_blocks: 4
+    feature_dim: 1024
+  optimizer: "sgd"
+  grad_optimizer_name: False
+  loss_config:
+    margin: 0.3
+    hard_factor: 0.0
+    which_contrast_loss: "multisim"
+    add_KLloss: True
+    add_MMDloss: False
+    add_MSEloss: False
+    kernel_mul: 3
+    kernel_num: 5
+  lr: 0.025
+  lr_sched: "cosine"
+  lr_sched_config:
+    T_max: 160
+  weight_decay: 0.0005
+  momentum: 0.9
+  warmpup_steps: 175
+
+max_epochs: 160

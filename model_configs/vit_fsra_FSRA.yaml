@@ -1,0 +1,37 @@
+batch_size: 8
+image_size: [256,256]
+test_size: [256,256]
+sample_num: 1
+DAC_sampling: False
+model_configs:
+  backbone_name: "vit_fsra"
+  backbone_configs:
+    img_size: [256, 256]
+    return_token: True
+    layers_to_freeze: 0
+    adapter: False
+  components_name: "FSRA"
+  components_configs:
+    num_classes: 701
+    num_blocks: 3
+    feature_dim: 768
+    return_f: 0.3
+  optimizer: "sgd"
+  grad_optimizer_name: False
+  loss_config:
+    margin: 0.3
+    hard_factor: 0.0
+    which_contrast_loss: "triplet"
+    add_KLloss: True
+    add_MMDloss: False
+    add_MSEloss: False
+  lr: 0.01
+  lr_sched: "multistep"
+  lr_sched_config:
+    milestones: [ 70, 110 ]
+    gamma: 0.1
+  weight_decay: 0.0005
+  momentum: 0.9
+  warmpup_steps: 500
+
+max_epochs: 120
