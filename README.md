@@ -63,7 +63,6 @@ pth_path = '/home/whu/Documents/codespace/Drone_Sat_Geo_Localization/Current_SOT
 
 datasets_configs = {
                     'U1652': ['sat->drone', 'drone->sat'],
-                    # 'DenseUAV':['drone->sat'],
                     'SUES200':([150, 200, 250, 300],['sat->drone','drone->sat'])
                     }
 ```
