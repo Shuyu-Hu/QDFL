@@ -1,0 +1,41 @@
+batch_size: 24
+image_size: [256,256]
+test_size: [256,256]
+sample_num: 1
+DAC_sampling: False
+model_configs:
+  backbone_name: "vit_fsra"
+  backbone_configs:
+    img_size: [256,256]
+    return_token: True
+    layers_to_freeze: 0
+    adapter: False
+  components_name: "QDFL"
+  components_configs:
+    in_channels: 768
+    num_classes: 701  #do not forget to change when the dataset is changed
+    num_supervisor: 2
+    query_configs:
+      num_queries: 8
+    return_f: True
+    cls_token: True
+  optimizer: "sgd"
+  grad_optimizer_name: False
+  loss_config:
+    margin: 0.4
+    hard_factor: 0.0
+    which_contrast_loss: "multisim"
+    add_KLloss: True
+    add_MMDloss: False
+    add_MSEloss: False
+    kernel_mul: 3
+    kernel_num: 5
+  lr: 0.03
+  lr_sched: "cosine"
+  lr_sched_config:
+    T_max: 160
+  weight_decay: 0.0005
+  momentum: 0.9
+  warmpup_steps: 175
+
+max_epochs: 160
