@@ -1,0 +1,48 @@
+batch_size: 8
+image_size: [256,256]
+test_size: [256,256]
+sample_num: 1
+DAC_sampling: False
+model_configs:
+  backbone_name: "resnet50"
+  backbone_configs:
+    pretrained: True
+    layers_to_freeze: 0
+    layers_to_crop: []
+    change_stride: True
+  components_name: "LPN"
+  components_configs:
+    num_classes: 701
+    pool: 'avg+max'
+    num_blocks: 4
+    feature_dim: 2048
+    return_f: False
+  optimizer: "sgd"
+  loss_config:
+    margin: 0.3
+    hard_factor: 0.0
+  lr: 0.001
+  lr_sched: "multistep"
+  lr_sched_config:
+    milestones: [ 80 ]
+    gamma: 0.1
+  weight_decay: 0.0005
+  momentum: 0.9
+  warmpup_steps: 500
+
+max_epochs: 120
+
+# 'backbone_name': "resnet50",
+#         # 'backbone_configs':{
+#         # 'pretrained':True,
+#         # 'layers_to_freeze':0,
+#         # 'layers_to_crop':[]},
+
+# "components_name":"LPN",
+#         # "components_configs":{
+#         #     'num_classes':dm.class_num(),
+#         #     'pool':'avg+max',
+#         #     'num_blocks':4,
+#         #     'feature_dim':2048,
+#         #     'return_f':False
+#         # },

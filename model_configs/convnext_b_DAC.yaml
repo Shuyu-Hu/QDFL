@@ -1,0 +1,39 @@
+#未完成，其与我们的loss计算方式有出入，没有继续改
+batch_size: 24
+image_size: [384,384]
+test_size: [384,384]
+sample_num: 1
+DAC_sampling: True
+drop_last: False
+model_configs:
+  backbone_name: "convnext_base"
+  backbone_configs:
+    stages_to_freeze: 0
+    return_token: True
+    return_chunk: False
+  components_name: "DAC"
+  components_configs:
+    num_classes: 701
+    block: 2
+    return_f: True
+  optimizer: "adamw"
+  grad_optimizer_name: False
+  loss_config:
+    margin: 0.3
+    hard_factor: 0.0
+    which_contrast_loss: "infonce"
+    add_KLloss: False
+    add_MMDloss: False
+    add_MSEloss: True
+    kernel_mul: 3
+    kernel_num: 5
+  lr: 0.001
+  lr_sched: "cosine"
+  lr_sched_config:
+    T_max: 1578
+  weight_decay: 0.0005
+  momentum: 0.9
+  warmpup_steps: 157.8
+
+max_epochs: 1
+

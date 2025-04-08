@@ -1,0 +1,29 @@
+batch_size: 4
+image_size: [512,512]
+model_configs:
+  backbone_name: "resnet50"
+  backbone_configs:
+    pretrained: True
+    layers_to_freeze: 0
+    layers_to_crop: []
+    change_stride: True
+  components_name: "SDPL"
+  components_configs:
+    num_classes: 701
+    pool: 'avg'
+    num_blocks: 4
+    feature_dim: 2048
+  optimizer: "sgd"
+  loss_config:
+    margin: 0.3
+    hard_factor: 0.0
+  lr: 0.001
+  lr_sched: "steplr"
+  lr_sched_config:
+    step_size: 43800
+    gamma: 0.75
+  weight_decay: 0.0005
+  momentum: 0.9
+  warmpup_steps: 0
+
+max_epochs: 120
