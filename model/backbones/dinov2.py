@@ -13,9 +13,9 @@ DINOV2_ARCHS = {
     'dinov2_vitg14': 1536,
 }
 DINOV2_WEIGHTS = {
-    'dinov2_vits14': '/home/whu/Documents/codespace/mixvpr/MixVPR/models/pretrained_weights/dinov2_vits14_pretrain.pth',
-    'dinov2_vitb14': '/home/whu/Documents/codespace/mixvpr/MixVPR/models/pretrained_weights/dinov2_vitb14_pretrain.pth',
-    'dinov2_vitl14': '/home/whu/Documents/codespace/mixvpr/MixVPR/models/pretrained_weights/dinov2_vitl14_pretrain.pth',
+    'dinov2_vits14': 'your_own_path/pretrained_weights/dinov2_vits14_pretrain.pth',
+    'dinov2_vitb14': 'your_own_path/pretrained_weights/dinov2_vitb14_pretrain.pth',
+    'dinov2_vitl14': 'your_own_path/pretrained_weights/dinov2_vitl14_pretrain.pth',
     'dinov2_vitg14': 'none',
 }
 DINOV2_LAYERS = {
@@ -25,26 +25,6 @@ DINOV2_LAYERS = {
     'dinov2_vitg14': 40,
 }
 
-
-class SideAdapter(nn.Module):  # Adapter is used to add to the transformer block for global adaptation
-    def __init__(self, D_features, D_hidden_features=16, act_layer=nn.GELU, skip_connect=True, alpha=0.5):
-        # mlp_ratio is the bottleneck ratio of adapters
-        super().__init__()
-        self.skip_connect = skip_connect
-        self.act = act_layer()
-        self.D_fc1 = nn.Linear(D_features, D_hidden_features)
-        self.D_fc2 = nn.Linear(D_hidden_features, D_features)
-        self.alpha = alpha
-
-    def forward(self, x):
-        xs = self.D_fc1(x)
-        xs = self.act(xs)
-        xs = self.D_fc2(xs)
-        if self.skip_connect:
-            x = x + self.alpha * xs
-        else:
-            x = xs
-        return x
 
 
 class DINOv2(nn.Module):

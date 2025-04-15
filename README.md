@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ```
 ___
 ## 📥 Model Weight
-Download pre-trained models:
+Download pre-trained model on University-1652:
 ```bash
 https://drive.google.com/file/d/1kbLEOsRoF8Q0e0RYYtbcH6za5R65KBE1/view?usp=drive_link
 ```
@@ -83,4 +83,7 @@ We gratefully acknowledge the following contributions that made this research po
 * **Our colleagues in the cross-view geo-localization research community** for their valuable insights and constructive discussions.
 * **Reviewers and editors** whose feedback helped improve this work.
 
-
+This repository is based on the excellent framework [Pytorch-Lightning](https://github.com/Lightning-AI/pytorch-lightning), and we also want to thank the creators of the excellent works:
+* [DINOv2](https://github.com/facebookresearch/dinov2)
+* [MixVPR](https://github.com/amaralibey/MixVPR)
+* [SelaVPR](https://github.com/Lu-Feng/SelaVPR)

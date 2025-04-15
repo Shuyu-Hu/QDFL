@@ -20,7 +20,6 @@ import pickle
 import json
 from pyproj import Proj, transform
 
-from plot_utils.PlotHeatMap import input_transform
 
 default_transform = T.Compose([
     T.ToTensor(),
